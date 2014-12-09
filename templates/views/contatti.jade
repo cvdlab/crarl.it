@@ -1,0 +1,47 @@
+extends ../layouts/default
+
+block content
+  .container
+    h3 Personale
+
+    ul
+      li: <a href="/contatti/ceccanti">Mauro Ceccanti</a>
+      li: <a href="/contatti/pompili">Saverio Pompili</a>
+      li: <a href="/docs/contatti/marialuisaattilia.pdf">Maria Luisa Attilia</a>
+      li: <a href="/docs/contatti/idacapriglione.pdf">Ida Capriglione</a>
+      li: <a href="/docs/contatti/marcopaolemili.pdf">Marco Paolemili</a>
+      li: <a href="/docs/contatti/annagalli.pdf">Anna Maria Galli</a>
+      li: <a href="/docs/contatti/fabioattilia.pdf">Fabio Attilia</a>
+  
+  .container
+    h3 Come raggiungerci
+
+    div#map-canvas
+
+  .container
+    h3 Collaborazioni
+    h4 Associazioni o enti con cui collaboriamo quotidianamente
+    ul
+      li: <a href="http://www.oap.crarl.it" target="_blank">Portale Osservatorio Alcol e Pubblicità</a>
+      li: <a href="http://www.alcolweb.it" target="_blank">Portale AlcolWeb</a>
+      li: <a href="http://www.retecontroalcolismo.it/" target="_blank">Portale Rete Contro l'Alcolismo </a>
+      li: <a href="http://www.sifasd.it/" target="_blank">Portale SIFASD</a>(<a href=" http://nofas.org/" target="_blank">portale in Inglese</a>)
+      li: <a href="http://www.salute.gov.it/alcol/homeAlcol.jsp" target="_blank">Ministero della Salute</a>
+
+    h4 Altre Collaborazioni
+    ul
+      li: Regione Lazio
+      li: Comune di Roma
+      li: Associazioni Sociali
+
+
+block js
+  script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&callback=initialize")
+  script.
+    function initialize() {
+      var mapOptions = { 
+        zoom: 16, 
+        center: new google.maps.LatLng(41.907,12.513) 
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    }

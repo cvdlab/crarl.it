@@ -1,0 +1,30 @@
+extends ../layouts/default
+
+block content
+  .container
+    h1 Strutture
+    h3 Elenco delle strutture che operano nel territorio laziale
+    p Tali strutture possono rappresentare associazioni di alcolisti anonimi, comunità, SERT, AUSL, ospedali, ANCA o CAT.
+
+  .container
+
+    table.table.table-striped
+      thead
+        tr
+          th Nome
+          th Tipologia
+          th Indirizzo
+          th Città
+          th Telefono
+          th Web
+          th Email
+      tbody
+        each structure in data.structures
+          tr
+            td= structure.name
+            td= structure.type
+            td= structure.address
+            td= structure.city
+            td= structure.phone
+            td= structure.website
+            td= structure.email
