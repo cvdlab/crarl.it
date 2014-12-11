@@ -7,19 +7,19 @@ exports = module.exports = function(req, res) {
     locals = res.locals;
   
   // Init locals
-  locals.section = 'progetti';
+  locals.section = 'news';
   locals.filters = {
     category: req.params.category
   };
   locals.data = {
-    posts: [],
+    news: [],
     categories: []
   };
   
   // Load all categories
   view.on('init', function(next) {
     
-    keystone.list('MediaCategory').model.find().sort('name').exec(function(err, results) {
+    keystone.list('NewsCategory').model.find().sort('name').exec(function(err, results) {
       
       if (err || !results.length) {
         return next(err);
@@ -30,8 +30,8 @@ exports = module.exports = function(req, res) {
       // Load the counts for each category
       async.each(locals.data.categories, function(category, next) {
         
-        keystone.list('Media').model.count().where('category').in([category.id]).exec(function(err, count) {
-          category.postCount = count;
+        keystone.list('News').model.count().where('category').in([category.id]).exec(function(err, count) {
+          category.newsCount = count;
           next(err);
         });
         
@@ -47,7 +47,7 @@ exports = module.exports = function(req, res) {
   view.on('init', function(next) {
     
     if (req.params.category) {
-      keystone.list('MediaCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
+      keystone.list('NewsCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
         locals.data.category = result;
         next(err);
       });
@@ -57,10 +57,10 @@ exports = module.exports = function(req, res) {
     
   });
   
-  // Load the posts
+  // Load the news
   view.on('init', function(next) {
     
-    var q = keystone.list('Media').paginate({
+    var q = keystone.list('News').paginate({
         page: req.query.page || 1,
         perPage: 10,
         maxPages: 10
@@ -74,13 +74,13 @@ exports = module.exports = function(req, res) {
     }
     
     q.exec(function(err, results) {
-      locals.data.medias = results;
+      locals.data.news = results;
       next(err);
     });
     
   });
   
   // Render the view
-  view.render('progetti');
+  view.render('notizie');
   
 }

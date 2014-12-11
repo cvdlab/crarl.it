@@ -7,19 +7,19 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	// Init locals
-	locals.section = 'documenti';
+	locals.section = 'documents';
 	locals.filters = {
 		category: req.params.category
 	};
 	locals.data = {
-		files: [],
+		documents: [],
 		categories: []
 	};
 	
 	// Load all categories
 	view.on('init', function(next) {
 		
-		keystone.list('FileCategory').model.find().sort('name').exec(function(err, results) {
+		keystone.list('DocumentCategory').model.find().sort('name').exec(function(err, results) {
 			
 			if (err || !results.length) {
 				return next(err);
@@ -30,8 +30,8 @@ exports = module.exports = function(req, res) {
 			// Load the counts for each category
 			async.each(locals.data.categories, function(category, next) {
 				
-				keystone.list('File').model.count().where('category').in([category.id]).exec(function(err, count) {
-					category.postCount = count;
+				keystone.list('Document').model.count().where('category').in([category.id]).exec(function(err, count) {
+					category.documentCount = count;
 					next(err);
 				});
 				
@@ -47,7 +47,7 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 		
 		if (req.params.category) {
-			keystone.list('FileCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
+			keystone.list('DocumentCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
 				locals.data.category = result;
 				next(err);
 			});
@@ -57,10 +57,10 @@ exports = module.exports = function(req, res) {
 		
 	});
 	
-	// Load the posts
+	// Load the documents
 	view.on('init', function(next) {
 		
-		var q = keystone.list('File').paginate({
+		var q = keystone.list('Document').paginate({
 				page: req.query.page || 1,
  				perPage: 10,
  				maxPages: 10
@@ -74,7 +74,7 @@ exports = module.exports = function(req, res) {
 		}
 		
 		q.exec(function(err, results) {
-			locals.data.files = results;
+			locals.data.documents = results;
 			next(err);
 		});
 		

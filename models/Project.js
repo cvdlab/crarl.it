@@ -16,7 +16,7 @@ Project.add({
   state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
   publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
   author: { type: Types.Relationship, ref: 'User', index: true },
-  // image: { type: Types.CloudinaryImage },
+  file: { type: Types.LocalFile, dest: 'public/projects', prefix: '/projects' },
   content: {
     brief: { type: Types.Textarea, wysiwyg: true, height: 150 },
     extended: { type: Types.Html, wysiwyg: true, height: 400 }

@@ -30,7 +30,6 @@ exports.initLocals = function(req, res, next) {
     { label: 'Progetti', key: 'progetti', href: '/progetti' },
     { label: 'Documenti', key: 'documenti', href: '/documenti' },
     { label: 'Notizie', key: 'notizie', href: '/notizie' },
-    { label: 'Media e attualità', key: 'media', href: '/media' },
     { label: 'Teleassistenza', key: 'teleassistenza', href: '/teleassistenza' },
     { label: 'Contatti', key: 'contatti', href: '/contatti' }
   ];

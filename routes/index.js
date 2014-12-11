@@ -38,14 +38,13 @@ exports = module.exports = function(app) {
   // Views
   app.get('/', routes.views.index);
   app.get('/strutture', routes.views.strutture);
-  app.get('/teleassistenza', routes.views.teleservice);
-  app.get('/progetti/:category?', routes.views.projects);
-  app.get('/documenti/:category?', routes.views.documents); 
-  app.get('/notizie/:category?', routes.views.news);
-  app.get('/media/:media?', routes.views.media);
-  app.get('/contatti', routes.views.contacts);
-  app.get('/contatti/ceccanti', routes.views.contacts_ceccanti);
-  app.get('/contatti/pompili', routes.views.contacts_pompili);
+  app.get('/teleassistenza', routes.views.teleassistenza);
+  app.get('/progetti/:category?', routes.views.progetti);
+  app.get('/documenti/:category?', routes.views.documenti); 
+  app.get('/notizie/:category?', routes.views.notizie);
+  app.get('/contatti', routes.views.contatti);
+  app.get('/contatti/ceccanti', routes.views.contatti_ceccanti);
+  app.get('/contatti/pompili', routes.views.contatti_pompili);
   
   
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

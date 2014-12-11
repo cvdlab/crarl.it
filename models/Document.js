@@ -16,7 +16,7 @@ Document.add({
   state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
   author: { type: Types.Relationship, ref: 'User', index: true },
   publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-  file: { type: Types.LocalFile, dest: 'public/documents' },
+  file: { type: Types.LocalFile, dest: 'public/documents', prefix: '/documents' },
   content: {
     brief: { type: Types.Textarea, wysiwyg: true, height: 150 },
     extended: { type: Types.Html, wysiwyg: true, height: 400 }

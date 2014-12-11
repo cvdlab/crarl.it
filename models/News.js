@@ -16,7 +16,9 @@ News.add({
   state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
   author: { type: Types.Relationship, ref: 'User', index: true },
   publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-  // image: { type: Types.CloudinaryImage },
+  file: { type: Types.LocalFile, dest: 'public/news', prefix: '/news' },
+  image: { type: Types.CloudinaryImage },
+  url: { type: Types.Url },
   content: {
     brief: { type: Types.Textarea, wysiwyg: true, height: 150 },
     extended: { type: Types.Html, wysiwyg: true, height: 400 }
