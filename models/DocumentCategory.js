@@ -11,7 +11,7 @@ var DocumentCategory = new keystone.List('DocumentCategory', {
 });
 
 DocumentCategory.add({
-  name: { type: String, required: true }
+  name: { type: Types.Text, required: true }
 });
 
 DocumentCategory.relationship({ ref: 'Document', path: 'categories' });

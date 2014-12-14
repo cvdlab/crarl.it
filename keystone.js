@@ -24,8 +24,9 @@ keystone.init({
   'session': true,
   'auth': true,
   'user model': 'User',
-  'cookie secret': 'gmtNkGPu%vK35@qi,ZT}5D~RhT6OMd}E[oXLqU4waCR;-;K81mw*TDMD(?s7LF"b'
-
+  'cookie secret': 'gmtNkGPu%vK35@qi,ZT}5D~RhT6OMd}E[oXLqU4waCR;-;K81mw*TDMD(?s7LF"b',
+  'compress': true,
+  'logger': false
 });
 
 // Load your project's Models
@@ -57,6 +58,7 @@ keystone.set('nav', {
   'documents': 'documents',
   'projects': 'projects',
   'structures': 'structures',
+  'people': 'people',
   'users': 'users'
 });
 

@@ -11,7 +11,7 @@ var NewsCategory = new keystone.List('NewsCategory', {
 });
 
 NewsCategory.add({
-  name: { type: String, required: true }
+  name: { type: Types.Text, required: true }
 });
 
 NewsCategory.relationship({ ref: 'News', path: 'categories' });
