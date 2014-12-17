@@ -27,8 +27,8 @@ News.add({
 });
 
 News.schema.virtual('content.full').get(function() {
-  var html_brief = '<p>' + this.content.brief + '</p>';
-  return this.content.extended || html_brief;
+  var htmlBrief = '<p>' + this.content.brief + '</p>';
+  return this.content.extended || htmlBrief;
 });
 
 News.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';

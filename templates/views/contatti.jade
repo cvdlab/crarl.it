@@ -39,9 +39,33 @@ block js
   script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&callback=initialize")
   script.
     function initialize() {
+      var position = new google.maps.LatLng(41.905640, 12.514114);
       var mapOptions = { 
         zoom: 16, 
-        center: new google.maps.LatLng(41.907,12.513) 
+        center: position
       };
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+      var contentString = 
+      '<div id="content">'+
+        '<h1 id="firstHeading" class="firstHeading">CRARL</h1>'+
+        '<div id="bodyContent">'+
+          '<p>Policlinico Umberto Primo, Viale del Policlinico, 155, 00186 Roma</p>'+
+        '</div>'+
+      '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+
+      var marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        title: 'CRARL • Policlinico Umberto Primo, Viale del Policlinico, 155, 00186 Roma'
+      });
+      
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,marker);
+      });
+
     }

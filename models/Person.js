@@ -25,8 +25,8 @@ Person.add({
 });
 
 Person.schema.virtual('content.full').get(function() {
-  var html_brief = '<p>' + this.content.brief + '</p>';
-  return this.content.extended || html_brief;
+  var htmlBrief = '<p>' + this.content.brief + '</p>';
+  return this.content.extended || htmlBrief;
 });
 
 Person.defaultColumns = 'fullname, order|20%, email|20%, phone|20%';
