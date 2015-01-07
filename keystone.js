@@ -54,9 +54,9 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
-  'news': 'news',
-  'documents': 'documents',
-  'projects': 'projects',
+  'news': ['news', 'news-categories'],
+  'documents': ['documents', 'document-categories'],
+  'projects': ['projects', 'project-categories'],
   'structures': 'structures',
   'people': 'people',
   'users': 'users'
