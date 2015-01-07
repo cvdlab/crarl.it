@@ -114,12 +114,9 @@ p {
   background-color: #f8f8f8;
   border: none;
 }
-#footer .poweredby {
-	float: left;
-	margin-right: 20px;
-}
-#footer .madeby {
+#footer .footer {
 	float: right;
+	margin-right: 20px;
 }
 #footer .iva {
 	margin-bottom: 10px;

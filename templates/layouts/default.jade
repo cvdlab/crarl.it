@@ -78,18 +78,24 @@ html
 
 
     //- FOOTER
-    #footer
-      .container
-        <div class="iva">Umberto I - Policlinico di Roma - Viale del Policlinico, 155 - 00161 Roma - C.F e P.IVA 058655110009</div> 
-        <div class="poweredby">Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a></div>
-        <div class="madeby">Made by <a href="http://cvdlab.org">CVDLAB</a></div>
+    #footer 
+      .container 
+        .iva Umberto I - Policlinico di Roma - Viale del Policlinico, 155 - 00161 Roma - C.F e P.IVA 058655110009
+        .footer 
+          span.madeby Made by 
+            a(href="http://cvdlab.org", target="_blank") CVDLAB
+          | , 
+          span.poweredby powered by 
+            a(href="http://keystonejs.com", target="_blank") KeystoneJS
+          | .
+        
         if user
           if user.canAccessKeystone
-            a(href='/keystone') Open Keystone 
-            span |
-            a(href='/keystone/signout') Sign Out 
+            a(href='/keystone') Apri pannello di amministrazione 
+            span • 
+            a(href='/keystone/signout') Esci 
         else
-          a(href='/keystone/signin') Sign In</a>
+          a(href='/keystone/signin') Entra</a>
 
     //- JAVASCRIPT
 
