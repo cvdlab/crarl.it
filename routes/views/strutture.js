@@ -7,9 +7,9 @@ exports = module.exports = function(req, res) {
     locals = res.locals;
   
   // Init locals
-  locals.section = 'strutture';
+  locals.section = 'structures';
   locals.data = {
-    strutture: []
+    structures: []
   };
   
   // Load all the structures
@@ -30,4 +30,4 @@ exports = module.exports = function(req, res) {
   // Render the view
   view.render('strutture');
   
-}
+};
