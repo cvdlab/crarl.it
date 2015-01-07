@@ -20,13 +20,10 @@ mixin project(project)
     if project.content.extended
       p.read-more: a(href='/progetti/' + project.slug) Read more...
 
-block intro
-  .container
-    h3= data.category ? 'Progetti - ' + data.category.name : 'Progetti'
-
 block content
   .container: .row
     .col-sm-8.col-md-9
+      h3= data.category ? 'Progetti - ' + data.category.name : 'Progetti'
       if filters.category && !data.category
         h3.text-muted Invalid Category.
       else
@@ -60,13 +57,13 @@ block content
                 li.disabled: a(href='?page=' + data.projects.totalPages): span.entypo.entypo-chevron-thin-right >
         else
           if data.category
-            h3.text-muted There are no projects in the category #{data.category.name}.
+            h3.text-muted Non ci sono progetti nella categoria #{data.category.name}.
           else
-            h3.text-muted There are no projects yet.
+            h3.text-muted Non ci sono ancora progetti.
     
     if data.categories.length
       .col-sm-4.col-md-3
-        <h2 class="side"> Categories </h2>
+        <h3 class="side">Categorie</h3>
 
         .list-group
           a(href='/progetti', class=!data.category ? 'active' : false).list-group-item All Categories
