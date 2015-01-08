@@ -40,8 +40,11 @@ exports = module.exports = function(app) {
   app.get('/strutture', routes.views.strutture);
   app.get('/teleassistenza', routes.views.teleassistenza);
   app.get('/progetti/:category?', routes.views.progetti);
+  app.get('/progetto/:project', routes.views.progetto);
   app.get('/documenti/:category?', routes.views.documenti); 
+  app.get('/documento/:doc', routes.views.documento);
   app.get('/notizie/:category?', routes.views.notizie);
+  app.get('/notizia/:news', routes.views.notizia);
   app.get('/contatti', routes.views.contatti);
   app.get('/contatti/ceccanti', routes.views.contatti_ceccanti);
   app.get('/contatti/pompili', routes.views.contatti_pompili);

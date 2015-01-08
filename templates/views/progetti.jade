@@ -2,7 +2,7 @@ extends ../layouts/default
 
 mixin project(project)
   .post(data-ks-editable=editable(user, { list: 'Project', id: project.id }))
-    h2: a(href='/progetti/' + project.slug)= project.title
+    h2: a(href='/progetto/' + project.slug)= project.title
     p.lead.text-muted Posted 
       if project.publishDate
         | on #{project._.publishedDate.format('MMMM Do, YYYY')} 
@@ -15,10 +15,10 @@ mixin project(project)
           else
             |  
       if project.author
-        | by #{project.author.name.first}
+        | by #{project.author.name.first} #{project.author.name.last}
     p!= project.content.brief
     if project.content.extended
-      p.read-more: a(href='/progetti/' + project.slug) Read more...
+      p.read-more: a(href='/progetto/' + project.slug) Read more...
 
 block content
   .container: .row

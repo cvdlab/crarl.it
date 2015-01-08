@@ -2,7 +2,7 @@ extends ../layouts/default
 
 mixin news(news)
   .post(data-ks-editable=editable(user, { list: 'News', id: news.id }))
-    h2: a(href='/notizie/' + news.slug)= news.title
+    h2: a(href='/notizia/' + news.slug)= news.title
     p.lead.text-muted Posted
       if news.publishDate
         | on #{news._.publishedDate.format('MMMM Do, YYYY')} 
@@ -20,7 +20,7 @@ mixin news(news)
       img(src=news._.image.fit(160,160)).img.pull-right
     p!= news.content.brief
     if news.content.extended
-      p.read-more: a(href='/notizie/' + news.slug) Read more...
+      p.read-more: a(href='/notizia/' + news.slug) Read more...
 
 block content
   .container: .row
@@ -31,8 +31,8 @@ block content
       else
         if data.news.results.length
           .documenti
-            each m in data.news.results
-              +media(m)
+            each n in data.news.results
+              +news(n)
           
           if data.news.totalPages > 1
             ul.pagination

@@ -2,7 +2,7 @@ extends ../layouts/default
 
 mixin doc(doc)
   .post(data-ks-editable=editable(user, { list: 'Document', id: doc.id }))
-    h2: a(href='/documenti/' + doc.slug)= doc.title
+    h2: a(href='/documento/' + doc.slug)= doc.title
     p.lead.text-muted Pubblicato 
       if doc.publishDate
         | on #{doc._.publishedDate.format('MMMM Do, YYYY')} 
@@ -18,7 +18,7 @@ mixin doc(doc)
         | da #{doc.author.name.first} #{doc.author.name.last}
     p!= doc.content.brief
     if doc.content.extended
-      p.read-more: a(href='/documenti/' + doc.slug) continua...
+      p.read-more: a(href='/documento/' + doc.slug) continua...
 
 block content
   .container: .row
