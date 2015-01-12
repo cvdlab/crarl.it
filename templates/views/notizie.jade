@@ -3,9 +3,9 @@ extends ../layouts/default
 mixin news(news)
   .post(data-ks-editable=editable(user, { list: 'News', id: news.id }))
     h2: a(href='/notizia/' + news.slug)= news.title
-    p.lead.text-muted Posted
+    p.lead.text-muted Pubblicata
       if news.publishDate
-        | on #{news._.publishedDate.format('MMMM Do, YYYY')} 
+        | il giorno #{news._.publishedDate.format('MMMM Do, YYYY')} 
       if news.categories && news.categories.length
         |  in 
         each cat, i in news.categories

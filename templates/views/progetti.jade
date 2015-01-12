@@ -3,7 +3,7 @@ extends ../layouts/default
 mixin project(project)
   .post(data-ks-editable=editable(user, { list: 'Project', id: project.id }))
     h2: a(href='/progetto/' + project.slug)= project.title
-    p.lead.text-muted Posted 
+    p.lead.text-muted Pubblicato 
       if project.publishDate
         | on #{project._.publishedDate.format('MMMM Do, YYYY')} 
       if project.categories && project.categories.length
