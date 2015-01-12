@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block content
+  .container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+    article
+      p: a(href='/progetti') &larr; ritorna ai Progetti
+      hr
+      if !data.project
+        h2 Progetto non valido.
+      else
+        header
+          h1= data.project.title
+          h5 Pubblicato 
+            if data.project.categories && data.project.categories.length
+              | in 
+              each cat, cat_i in data.project.categories
+                a(href='/progetti/' + cat.key)= cat.name
+                if cat_i < data.project.categories.length - 1
+                  | , 
+                else
+                  |  
+            if data.project.author
+              | da #{data.project.author.name.first} #{data.project.author.name.last}
+        .post
+          if data.project.content && data.project.content.extended
+            != data.project.content.extended

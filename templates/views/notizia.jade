@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block content
+  .container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+    article
+      p: a(href='/notizie') &larr; ritorna alle Notizie
+      hr
+      if !data.news
+        h2 Notizia non valida.
+      else
+        header
+          h1= data.news.title
+          h5 Pubblicata 
+            if data.news.categories && data.news.categories.length
+              | in 
+              each cat, cat_i in data.news.categories
+                a(href='/notizie/' + cat.key)= cat.name
+                if cat_i < data.news.categories.length - 1
+                  | , 
+                else
+                  |  
+            if data.news.author
+              | da #{data.news.author.name.first} #{data.news.author.name.last}
+        .post
+          if data.news.content && data.news.content.extended
+            != data.news.content.extended
